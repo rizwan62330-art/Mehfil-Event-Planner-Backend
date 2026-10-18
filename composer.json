@@ -56,7 +56,10 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true,
-    "allow-plugins": {}
+    "allow-plugins": {},
+    "platform": {
+      "php": "8.2.34"
+    }
   },
   "minimum-stability": "stable",
   "prefer-stable": true
