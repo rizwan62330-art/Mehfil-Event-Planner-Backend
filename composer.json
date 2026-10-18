@@ -1,21 +1,29 @@
 {
   "name": "mehfil/event-directory",
   "type": "project",
-  "description": "Mehfil Event Planners Laravel 10 database backend",
+  "description": "Mehfil Event Planners Laravel 12 REST API Backend",
+  "keywords": [
+    "laravel",
+    "events",
+    "venue-directory",
+    "mysql",
+    "api"
+  ],
   "license": "MIT",
   "require": {
-    "php": "^8.1",
-    "laravel/framework": "^10.0",
-    "laravel/sanctum": "^3.3",
-    "laravel/tinker": "^2.8"
+    "php": "^8.2",
+    "ext-pdo_mysql": "*",
+    "laravel/framework": "^12.0",
+    "laravel/sanctum": "^4.0",
+    "laravel/tinker": "^2.10"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",
     "laravel/pint": "^1.0",
-    "laravel/sail": "^1.18",
+    "laravel/sail": "^1.41",
     "mockery/mockery": "^1.6",
-    "nunomaduro/collision": "^7.0",
-    "phpunit/phpunit": "^10.0"
+    "nunomaduro/collision": "^8.0",
+    "phpunit/phpunit": "^11.0"
   },
   "autoload": {
     "psr-4": {
@@ -48,9 +56,7 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true,
-    "audit": {
-      "block-insecure": false
-    }
+    "allow-plugins": {}
   },
   "minimum-stability": "stable",
   "prefer-stable": true
