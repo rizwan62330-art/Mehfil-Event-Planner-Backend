@@ -4,7 +4,7 @@
   "description": "Mehfil Event Planners Laravel 10 database backend",
   "license": "MIT",
   "require": {
-    "php": "^8.1",
+    "php": "^8.2",
     "laravel/framework": "^10.0",
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8"
