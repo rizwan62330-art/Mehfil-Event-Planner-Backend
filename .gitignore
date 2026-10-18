@@ -10,5 +10,3 @@
 !/storage/framework/cache/data/.gitkeep
 
 .env.example
-composer.json
-composer.lock
