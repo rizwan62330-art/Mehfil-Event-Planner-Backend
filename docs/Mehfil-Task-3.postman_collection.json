@@ -1,0 +1,26 @@
+{
+  "info": {
+    "name": "Mehfil Event Planners - Task 3 API",
+    "description": "REST API checks for listings, reviews, Sanctum authentication, validation, and ownership.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000" },
+    { "key": "token", "value": "PASTE_TOKEN_HERE" },
+    { "key": "listing_id", "value": "1" },
+    { "key": "review_id", "value": "1" }
+  ],
+  "item": [
+    { "name": "Public - Paginated listings", "request": { "method": "GET", "url": "{{base_url}}/api/listings?per_page=5" } },
+    { "name": "Public - Search listings", "request": { "method": "GET", "url": "{{base_url}}/api/listings?search=hall&city=Rawalpindi" } },
+    { "name": "Public - Listing details", "request": { "method": "GET", "url": "{{base_url}}/api/listings/{{listing_id}}" } },
+    { "name": "Public - Listing reviews", "request": { "method": "GET", "url": "{{base_url}}/api/listings/{{listing_id}}/reviews" } },
+    { "name": "Auth - Register", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Accept", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"API Test User\",\n  \"email\": \"api-test@example.com\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\"\n}" }, "url": "{{base_url}}/api/register" } },
+    { "name": "Auth - Login", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Accept", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"email\": \"api-test@example.com\",\n  \"password\": \"password123\"\n}" }, "url": "{{base_url}}/api/login" } },
+    { "name": "Protected - Create listing", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Accept", "value": "application/json" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"category_id\": 1,\n  \"name\": \"Sample Event Hall\",\n  \"description\": \"A spacious venue suitable for weddings and family celebrations.\",\n  \"city\": \"Rawalpindi\",\n  \"address\": \"Main Road, Rawalpindi\",\n  \"capacity\": 400,\n  \"starting_price\": 125000\n}" }, "url": "{{base_url}}/api/listings" } },
+    { "name": "Protected - Submit review", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Accept", "value": "application/json" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"rating\": 5,\n  \"title\": \"Great venue\",\n  \"comment\": \"The venue was clean and the staff were helpful.\"\n}" }, "url": "{{base_url}}/api/listings/{{listing_id}}/reviews" } },
+    { "name": "Protected - Invalid review (expect 422)", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Accept", "value": "application/json" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"rating\": 9,\n  \"comment\": \"short\"\n}" }, "url": "{{base_url}}/api/listings/{{listing_id}}/reviews" } },
+    { "name": "Protected - Update review", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Accept", "value": "application/json" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Updated review text with enough detail.\"\n}" }, "url": "{{base_url}}/api/reviews/{{review_id}}" } },
+    { "name": "Protected - Delete review", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Accept", "value": "application/json" }], "url": "{{base_url}}/api/reviews/{{review_id}}" } }
+  ]
+}
